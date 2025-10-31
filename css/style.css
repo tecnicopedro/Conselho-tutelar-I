@@ -1,0 +1,207 @@
+/* css/style.css */
+
+:root {
+    --cor-principal: #007bff; /* Azul primário (Institucional) */
+    --cor-secundaria: #28a745; /* Verde (Ação/Sucesso) */
+    --cor-fundo: #f8f9fa; /* Fundo claro */
+    --cor-texto: #343a40; /* Texto escuro */
+    --cor-alerta: #dc3545; /* Vermelho (Denúncia) */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header e Navegação --- */
+header {
+    background: var(--cor-principal);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* NOVO: Estilos do container para alinhar Logo + Navegação */
+header .container {
+    display: flex;
+    justify-content: space-between; /* Espaça a área da logo da NAV */
+    align-items: center; /* Alinha verticalmente */
+}
+
+/* NOVO: Container da Logo (mantém o texto e a imagem alinhados) */
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove sublinhado do link principal */
+    color: white; /* Mantém a cor do texto do link */
+    transition: opacity 0.3s; /* Adiciona transição para o hover */
+}
+
+.header-logo:hover {
+    opacity: 0.8; /* Efeito simples de clique/hover */
+}
+
+.header-logo img {
+    height: 60px; /* Define o tamanho da logo */
+    margin-right: 15px; /* Espaçamento entre a imagem e o texto */
+}
+
+/* NOVO: Esconde o <h1> antigo. Usamos a classe .header-text agora */
+header h1 {
+    display: none; 
+}
+
+.header-logo .header-text {
+    font-size: 1.5rem; /* Tamanho do título */
+    line-height: 1.2; /* Ajuste para texto multi-linha */
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* justify-content: center; REMOVIDO pois o header.container já alinha */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* --- Conteúdo Principal (Especialmente os Cards da Home) --- */
+main {
+    padding: 40px 0;
+    text-align: center; /* Centraliza o H2 e o P na MAIN */
+}
+
+/* NOVO: Classe para alinhar os 3 cards da página inicial em linha */
+.cards-container {
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço entre os cards */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin-top: 40px;
+    flex-wrap: wrap; /* Garante que quebrem a linha em telas menores */
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Ajuste de largura para os cards na home */
+    flex: 1 1 300px; /* Permite que cresçam e encolham, mas com largura mínima de 300px */
+    text-align: left; /* Garante que o texto dentro do card não seja centralizado */
+}
+
+/* NOVO: Estilos para o botão dentro do card (Ver Mais) */
+.card .button {
+    background-color: var(--cor-secundaria);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.card .button:hover {
+    background-color: #1e7e34;
+}
+
+/* NOVO: Estilos para os números de telefone de plantão */
+.phone-number {
+    font-size: 1.5rem;
+    color: var(--cor-principal);
+    font-weight: bold;
+    margin: 5px 0;
+}
+.small-info {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+
+/* --- Botão CTA Denúncia (Destacado) --- */
+.btn-denuncia {
+    background-color: var(--cor-alerta);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-denuncia:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--cor-texto);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Ajustes para Responsividade */
+@media (max-width: 992px) {
+    /* Ajusta o header para telas menores que 992px, quebrando a Logo e a NAV */
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 10px;
+    }
+    /* NOVO: Centraliza a logo na quebra */
+    .header-logo {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .header-logo img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .cards-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+}
