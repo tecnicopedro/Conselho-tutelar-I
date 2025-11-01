@@ -211,3 +211,41 @@ footer {
         text-align: center;
     }
 }
+/* --- Animação de Fade-in para o Conteúdo Principal --- */
+
+/* Define a animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Começa invisível */
+        transform: translateY(20px); /* Começa 20px abaixo da posição final */
+    }
+    to {
+        opacity: 1; /* Termina visível */
+        transform: translateY(0); /* Termina na posição original */
+    }
+}
+
+/* Aplica a animação aos elementos principais */
+main .container > * { /* Aplica a filhos diretos do container principal da main */
+    animation: fadeIn 0.8s ease-out forwards; /* Duração de 0.8s, com suavização, e mantém o estado final */
+    opacity: 0; /* Garante que os elementos estejam invisíveis antes da animação */
+}
+
+/* Para elementos específicos que podem precisar de um delay ou ajuste */
+.cards-container, .btn-denuncia, .policy-section {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    /* Adicionar um pequeno delay para que apareçam em sequência */
+    animation-delay: 0.2s; /* Exemplo de delay */
+}
+
+/* Se precisar de delays diferentes para cada card na mesma página */
+.cards-container .card:nth-child(1) { animation-delay: 0.1s; }
+.cards-container .card:nth-child(2) { animation-delay: 0.2s; }
+.cards-container .card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Para a área da política, se houver muitas seções */
+.policy-section:nth-child(1) { animation-delay: 0.1s; }
+.policy-section:nth-child(2) { animation-delay: 0.2s; }
+.policy-section:nth-child(3) { animation-delay: 0.3s; }
+.policy-section:nth-child(4) { animation-delay: 0.4s; }
