@@ -1,4 +1,4 @@
-/* css/style.css - CÓDIGO ATUALIZADO */
+/* css/style.css - CÓDIGO FINAL E CORRIGIDO */
 
 :root {
     --cor-principal: #007bff; /* Azul primário (Institucional) */
@@ -35,7 +35,6 @@ header {
 /* ATUALIZADO: Estilos do container para alinhar Logo + Navegação */
 header .container {
     display: flex;
-    /* justify-content: space-between; <-- REMOVIDO para eliminar o vazio */
     justify-content: flex-start; /* Força Logo e Menu para a esquerda */
     gap: 50px; /* Adiciona o espaçamento entre Logo e Menu */
     align-items: center; /* Alinha verticalmente */
@@ -144,7 +143,6 @@ main {
     color: #6c757d;
 }
 
-
 /* --- Botão CTA Denúncia (Destacado) --- */
 .btn-denuncia {
     background-color: var(--cor-alerta);
@@ -160,7 +158,7 @@ main {
 }
 
 .btn-denuncia:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
+    background-color: #c82333; 
 }
 
 /* --- Footer --- */
@@ -173,21 +171,20 @@ footer {
     font-size: 0.9rem;
 }
 
-/* AJUSTES PARA RESPONSIVIDADE - VERSÃO FINAL E DEFINITIVA */
+/* AJUSTES PARA RESPONSIVIDADE - CORREÇÃO FINAL Z-INDEX */
 @media (max-width: 992px) {
     
-    /* 1. CORREÇÃO CRÍTICA: Força o container do cabeçalho a se comportar como a camada superior */
+    /* 1. CORREÇÃO CRÍTICA: Força o container do cabeçalho a se comportar como a camada superior (Z-index) */
     header .container {
-        /* Regras que já existiam, mas agora com as regras de sobreposição: */
         flex-direction: column;
         justify-content: center; 
         gap: 15px; 
         padding: 15px 20px; 
         height: auto; 
         
-        /* Novas Regras de sobreposição */
+        /* Regras de sobreposição */
         position: relative; 
-        z-index: 1000; /* Prioridade máxima sobre o conteúdo principal (main) */
+        z-index: 1000; /* Prioriza o HEADER sobre o MAIN */
     }
 
     /* 2. Remove a altura fixa no mobile (deixa o header crescer naturalmente) */
@@ -207,7 +204,7 @@ footer {
     
     /* Garante que o menu em si esteja no topo (Mantido) */
     nav {
-        z-index: 1001;
+        z-index: 1001; /* Z-index ainda mais alto */
         width: 100%;
     }
 
@@ -232,24 +229,25 @@ footer {
         text-align: center;
     }
 }
+
 /* --- Animação de Fade-in para o Conteúdo Principal --- */
 
 /* Define a animação */
 @keyframes fadeIn {
     from {
-        opacity: 0; /* Começa invisível */
-        transform: translateY(20px); /* Começa 20px abaixo da posição final */
+        opacity: 0; 
+        transform: translateY(20px); 
     }
     to {
-        opacity: 1; /* Termina visível */
-        transform: translateY(0); /* Termina na posição original */
+        opacity: 1; 
+        transform: translateY(0); 
     }
 }
 
 /* Aplica a animação aos elementos principais */
-main .container > * { /* Aplica a filhos diretos do container principal da main */
-    animation: fadeIn 0.8s ease-out forwards; /* Duração de 0.8s, com suavização, e mantém o estado final */
-    opacity: 0; /* Garante que os elementos estejam invisíveis antes da animação */
+main .container > * { 
+    animation: fadeIn 0.8s ease-out forwards; 
+    opacity: 0; 
 }
 
 /* Para elementos específicos que podem precisar de um delay ou ajuste */
@@ -257,7 +255,7 @@ main .container > * { /* Aplica a filhos diretos do container principal da main 
     animation: fadeIn 0.8s ease-out forwards;
     opacity: 0;
     /* Adicionar um pequeno delay para que apareçam em sequência */
-    animation-delay: 0.2s; /* Exemplo de delay */
+    animation-delay: 0.2s; 
 }
 
 /* Se precisar de delays diferentes para cada card na mesma página */
@@ -265,7 +263,6 @@ main .container > * { /* Aplica a filhos diretos do container principal da main 
 .cards-container .card:nth-child(2) { animation-delay: 0.2s; }
 .cards-container .card:nth-child(3) { animation-delay: 0.3s; }
 
-/* Para a área da política, se houver muitas seções */
 .policy-section:nth-child(1) { animation-delay: 0.1s; }
 .policy-section:nth-child(2) { animation-delay: 0.2s; }
 .policy-section:nth-child(3) { animation-delay: 0.3s; }
