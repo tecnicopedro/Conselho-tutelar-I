@@ -173,34 +173,26 @@ footer {
     font-size: 0.9rem;
 }
 
-/* AJUSTES PARA RESPONSIVIDADE - VERSÃO CORRIGIDA E LIMPA */
+/* AJUSTES PARA RESPONSIVIDADE - VERSÃO FINAL E DEFINITIVA */
 @media (max-width: 992px) {
     
-    /* 1. Remove a altura fixa no mobile (deixa o header crescer naturalmente) */
-    header {
-        height: auto; 
-    }
-
-    /* 2. Empilha a Logo e o Menu (Mantido) */
+    /* 1. CORREÇÃO CRÍTICA: Força o container do cabeçalho a se comportar como a camada superior */
     header .container {
+        /* Regras que já existiam, mas agora com as regras de sobreposição: */
         flex-direction: column;
         justify-content: center; 
         gap: 15px; 
         padding: 15px 20px; 
         height: auto; 
-    }
-    
-    /* 3. Aplica o z-index APENAS à navegação, tornando-a clicável */
-    nav {
-        z-index: 1000; /* Prioridade máxima */
-        position: relative; /* Necessário para que o z-index funcione */
-        width: 100%; /* Garante que ela ocupe toda a largura disponível */
+        
+        /* Novas Regras de sobreposição */
+        position: relative; 
+        z-index: 1000; /* Prioridade máxima sobre o conteúdo principal (main) */
     }
 
-    /* Regras do nav ul existentes (Mantido) */
-    nav ul {
-        margin-top: 10px;
-        width: 100%;
+    /* 2. Remove a altura fixa no mobile (deixa o header crescer naturalmente) */
+    header {
+        height: auto; 
     }
     
     /* Centraliza a logo na quebra (Mantido) */
@@ -212,6 +204,18 @@ footer {
         margin-right: 0;
         margin-bottom: 5px;
     }
+    
+    /* Garante que o menu em si esteja no topo (Mantido) */
+    nav {
+        z-index: 1001;
+        width: 100%;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        width: 100%;
+    }
+    
     .cards-container {
         justify-content: center;
     }
