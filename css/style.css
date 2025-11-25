@@ -173,31 +173,48 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Ajustes para Responsividade */
+/* AJUSTES PARA RESPONSIVIDADE - VERSÃO CORRIGIDA E LIMPA */
 @media (max-width: 992px) {
-    /* Ajusta o header para telas menores que 992px, quebrando a Logo e a NAV */
+    
+    /* 1. Remove a altura fixa no mobile (deixa o header crescer naturalmente) */
+    header {
+        height: auto; 
+    }
+
+    /* 2. Empilha a Logo e o Menu (Mantido) */
     header .container {
         flex-direction: column;
-        justify-content: center; /* Centraliza a coluna */
-        gap: 15px; /* Novo: Espaçamento entre logo e menu empilhados */
-        padding: 15px 20px; /* Novo: Adiciona padding para o conteúdo não tocar as bordas */
-        height: auto; /* Novo: Permite que o cabeçalho cresça verticalmente */
+        justify-content: center; 
+        gap: 15px; 
+        padding: 15px 20px; 
+        height: auto; 
     }
+    
+    /* 3. Aplica o z-index APENAS à navegação, tornando-a clicável */
+    nav {
+        z-index: 1000; /* Prioridade máxima */
+        position: relative; /* Necessário para que o z-index funcione */
+        width: 100%; /* Garante que ela ocupe toda a largura disponível */
+    }
+
+    /* Regras do nav ul existentes (Mantido) */
     nav ul {
         margin-top: 10px;
+        width: 100%;
     }
-    /* Centraliza a logo na quebra */
+    
+    /* Centraliza a logo na quebra (Mantido) */
     .header-logo {
-        flex-direction: column;
-        margin-bottom: 10px;
-    }
-    .header-logo img {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-    .cards-container {
-        justify-content: center;
-    }
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .header-logo img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .cards-container {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
