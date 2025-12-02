@@ -72,7 +72,76 @@
                 </ul>
             </div>
         </div>
-    </main>
+<div class="card">
+    <h2>Envie uma mensagem</h2>
+    <p>Preencha os campos abaixo. Sua mensagem será registrada e você verá uma confirmação de envio.</p>
+
+    <form id="formContato">
+
+        <label for="nome"><strong>Nome completo:</strong></label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+        <label for="email"><strong>E-mail:</strong></label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="telefone"><strong>Telefone (opcional):</strong></label>
+        <input type="text" id="telefone" name="telefone" placeholder="(91) 90000-0000">
+
+        <label for="assunto"><strong>Assunto:</strong></label>
+        <input type="text" id="assunto" name="assunto" placeholder="Sobre o que deseja falar?" required>
+
+        <label for="mensagem"><strong>Mensagem:</strong></label>
+        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+        <button type="submit" id="btnEnviar" class="btn-denuncia" style="background-color: var(--cor-principal); margin-top: 15px;">
+            Enviar mensagem
+        </button>
+
+        <p id="statusMsg" style="display:none; margin-top:10px; font-weight:600;"></p>
+    </form>
+</div>
+
+<script>
+document.getElementById("formContato").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const btn = document.getElementById("btnEnviar");
+    const status = document.getElementById("statusMsg");
+
+    btn.disabled = true;
+    btn.innerText = "Enviando...";
+
+    // Simula processamento
+    setTimeout(() => {
+
+        // Empacota dados no limbo
+        const dados = {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            telefone: document.getElementById("telefone").value,
+            assunto: document.getElementById("assunto").value,
+            mensagem: document.getElementById("mensagem").value,
+            data: new Date().toLocaleString("pt-BR")
+        };
+
+        // Salva localmente
+        localStorage.setItem("ultimo_formulario", JSON.stringify(dados));
+
+        // Mensagem de sucesso
+        status.style.display = "block";
+        status.style.color = "green";
+        status.innerText = "✔️ Mensagem enviada com sucesso!";
+
+        btn.innerText = "Enviado!";
+        btn.style.backgroundColor = "green";
+
+        // Limpa os campos
+        document.getElementById("formContato").reset();
+
+    }, 1200);
+});
+</script>
+     </main>
 
     <footer>
     <div class="container">
